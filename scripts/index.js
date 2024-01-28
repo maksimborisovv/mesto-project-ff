@@ -15,6 +15,11 @@ function createCard(imageSrc, imageAlt, title, deleteCardCallback) {
     const deleteButton = card.querySelector('.card__delete-button');
     deleteButton.addEventListener('click', () => deleteCardCallback(card));
 
+    return card;
+}
+
+//Функция добавления карточки
+function addCard(card) {
     placesList.append(card);
 }
 
@@ -24,4 +29,6 @@ function deleteCard(card) {
 }
 
 // Вывести карточки на страницу
-initialCards.forEach(card => createCard(card.link, card.name, card.name, deleteCard));
+initialCards.forEach(
+    card => addCard(createCard(card.link, card.name, card.name, deleteCard))
+);
