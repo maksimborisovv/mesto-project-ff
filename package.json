@@ -1,13 +1,13 @@
 {
   "name": "mesto-project-ff",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://github.com/maksimborisovv/mesto-project-ff",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve"
   },
-  "author": "",
+  "author": "Maksim Borisov",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.23.9",
