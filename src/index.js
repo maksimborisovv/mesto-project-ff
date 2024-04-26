@@ -19,6 +19,11 @@ import {
   profileDescription,
   popupProfile,
 } from "./components/constants";
+import {
+  clearValidation,
+  enableValidation,
+  validationParams,
+} from "./components/validation";
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -53,10 +58,17 @@ function handleNewCardFormSubmit(evt) {
 function openProfilePopupByButton() {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+
+  const popupFormElement = popupProfile.querySelector(".popup__form");
+  clearValidation(popupFormElement, validationParams);
+
   openPopup(popupProfile);
 }
 
 function openNewCardPopupByButton() {
+  const popupFormElement = popupNewCard.querySelector(".popup__form");
+  clearValidation(popupFormElement, validationParams);
+
   openPopup(popupNewCard);
 }
 
@@ -77,3 +89,5 @@ initialCards.forEach((card) =>
     )
   )
 );
+
+enableValidation(validationParams);
