@@ -46,9 +46,10 @@ function handleProfileFormSubmit(evt) {
   profileDescription.textContent = profileDescriptionInput.value;
   updateUserInformation(profileName.textContent, profileDescription.textContent)
     .catch((err) => console.log(err))
-    .finally(() => (applyButton.textContent = "Сохранить"));
-
-  closePopup(popupProfile);
+    .finally(() => {
+      applyButton.textContent = "Сохранить";
+      closePopup(popupProfile);
+    });
 }
 
 function openCardPopupByButton(src, alt) {
@@ -73,10 +74,11 @@ function handleNewCardFormSubmit(evt) {
     .catch((err) =>
       console.log("Ошибка во время загрузки карточки на сервер. " + err)
     )
-    .finally(() => (applyButton.textContent = "Сохранить"));
-
-  closePopup(popupNewCard);
-  newCardForm.reset();
+    .finally(() => {
+      applyButton.textContent = "Сохранить";
+      closePopup(popupNewCard);
+      newCardForm.reset();
+    });
 }
 
 function openProfilePopupByButton() {
@@ -107,10 +109,11 @@ function handleEditAvatarFormSubmit(evt) {
       profileImage.style.backgroundImage = `url(${avatarUrl.value})`;
     })
     .catch((err) => console.log("Ошибка при редактировании аватара. " + err))
-    .finally(() => (applyButton.textContent = "Сохранить"));
-
-  closePopup(popupEditAvatar);
-  newCardForm.reset();
+    .finally(() => {
+      applyButton.textContent = "Сохранить";
+      closePopup(popupEditAvatar);
+      newCardForm.reset();
+    });
 }
 
 function openUpdateAvatarPopupByButton() {
