@@ -1,3 +1,11 @@
+@import url('./_count/card__like-button_count.css');
+
+.card__like-button_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card__like-button {
   width: 21px;
   height: 18px;

@@ -1,38 +1,29 @@
-const profileName = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
+export const profileName = document.querySelector(".profile__title");
+export const profileDescription = document.querySelector(
+  ".profile__description"
+);
+export const profileImage = document.querySelector(".profile__image");
 
-const popupProfile = document.querySelector(".popup_type_edit");
-const popupProfileForm = popupProfile.querySelector(".popup__form");
-const profileNameInput = popupProfileForm.elements.name;
-const profileDescriptionInput = popupProfileForm.elements.description;
+export const popupProfile = document.querySelector(".popup_type_edit");
+export const popupProfileForm = popupProfile.querySelector(".popup__form");
+export const profileNameInput = popupProfileForm.elements.name;
+export const profileDescriptionInput = popupProfileForm.elements.description;
 
-const popupNewCard = document.querySelector(".popup_type_new-card");
+export const popupNewCard = document.querySelector(".popup_type_new-card");
 
-const newCardForm = popupNewCard.querySelector(".popup__form");
-const newCardTitle = newCardForm.elements["place-name"];
-const newCardUrl = newCardForm.elements.link;
+export const popupEditAvatar = document.querySelector(".popup_type_edit_avatar");
+export const editAvatarForm = popupEditAvatar.querySelector(".popup__form");
+export const avatarUrl = editAvatarForm.elements["avatar-url"];
 
-const popupCard = document.querySelector(".popup_type_image");
-const popupCardImage = popupCard.querySelector(".popup__image");
-const popupCardCaption = popupCard.querySelector(".popup__caption");
+export const newCardForm = popupNewCard.querySelector(".popup__form");
+export const newCardTitle = newCardForm.elements["place-name"];
+export const newCardUrl = newCardForm.elements.link;
 
-const editButton = document.querySelector(".profile__edit-button");
-const addButton = document.querySelector(".profile__add-button");
+export const popupCard = document.querySelector(".popup_type_image");
+export const popupCardImage = popupCard.querySelector(".popup__image");
+export const popupCardCaption = popupCard.querySelector(".popup__caption");
 
-export {
-  editButton,
-  addButton,
-  newCardForm,
-  popupProfileForm,
-  popupNewCard,
-  newCardTitle,
-  newCardUrl,
-  popupCardImage,
-  popupCardCaption,
-  popupCard,
-  profileNameInput,
-  profileName,
-  profileDescriptionInput,
-  profileDescription,
-  popupProfile,
-};
+export const editButton = document.querySelector(".profile__edit-button");
+export const addButton = document.querySelector(".profile__add-button");
+
+export let userId;
