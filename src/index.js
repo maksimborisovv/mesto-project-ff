@@ -35,21 +35,21 @@ import {
   uploadAvatar,
   uploadCard,
 } from "./components/api";
+import { handleSubmit } from "./components/utils";
 
 function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-
-  const applyButton = popupProfile.querySelector(".popup__button");
-  applyButton.textContent = "Сохранение...";
-
-  profileName.textContent = profileNameInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  updateUserInformation(profileName.textContent, profileDescription.textContent)
-    .catch((err) => console.log(err))
-    .finally(() => {
-      applyButton.textContent = "Сохранить";
+  function makeRequest() {
+    return updateUserInformation(
+      profileNameInput.value,
+      profileDescriptionInput.value
+    ).then((user) => {
+      profileName.textContent = user.name;
+      profileDescription.textContent = user.about;
       closePopup(popupProfile);
     });
+  }
+
+  handleSubmit(makeRequest, evt);
 }
 
 function openCardPopupByButton(src, alt) {
@@ -60,65 +60,47 @@ function openCardPopupByButton(src, alt) {
 }
 
 function handleNewCardFormSubmit(evt) {
-  evt.preventDefault();
-
-  const applyButton = popupNewCard.querySelector(".popup__button");
-  applyButton.textContent = "Сохранение...";
-
-  uploadCard(newCardTitle.value, newCardUrl.value)
-    .then((card) => {
+  function makeRequest() {
+    return uploadCard(newCardTitle.value, newCardUrl.value).then((card) => {
       addCard(
         createCard(card, userId, deleteCard, openCardPopupByButton, likeCard)
       );
-    })
-    .catch((err) =>
-      console.log("Ошибка во время загрузки карточки на сервер. " + err)
-    )
-    .finally(() => {
-      applyButton.textContent = "Сохранить";
+
       closePopup(popupNewCard);
-      newCardForm.reset();
     });
+  }
+
+  handleSubmit(makeRequest, evt);
 }
 
 function openProfilePopupByButton() {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 
-  const popupFormElement = popupProfile.querySelector(".popup__form");
-  clearValidation(popupFormElement, validationParams);
+  clearValidation(popupProfileForm, validationParams);
 
   openPopup(popupProfile);
 }
 
 function openNewCardPopupByButton() {
-  const popupFormElement = popupNewCard.querySelector(".popup__form");
-  clearValidation(popupFormElement, validationParams);
+  clearValidation(newCardForm, validationParams);
 
   openPopup(popupNewCard);
 }
 
 function handleEditAvatarFormSubmit(evt) {
-  evt.preventDefault();
-
-  const applyButton = popupEditAvatar.querySelector(".popup__button");
-  applyButton.textContent = "Сохранение...";
-
-  uploadAvatar(avatarUrl.value)
-    .then(() => {
+  function makeRequest() {
+    return uploadAvatar(avatarUrl.value).then(() => {
       profileImage.style.backgroundImage = `url(${avatarUrl.value})`;
-    })
-    .catch((err) => console.log("Ошибка при редактировании аватара. " + err))
-    .finally(() => {
-      applyButton.textContent = "Сохранить";
       closePopup(popupEditAvatar);
-      newCardForm.reset();
     });
+  }
+
+  handleSubmit(makeRequest, evt);
 }
 
 function openUpdateAvatarPopupByButton() {
-  const popupFormElement = popupEditAvatar.querySelector(".popup__form");
-  clearValidation(popupFormElement, validationParams);
+  clearValidation(editAvatarForm, validationParams);
 
   openPopup(popupEditAvatar);
 }
