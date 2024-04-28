@@ -18,7 +18,6 @@ import {
   profileDescription,
   popupProfile,
   profileImage,
-  userId,
   popupEditAvatar,
   editAvatarForm,
   avatarUrl,
@@ -36,6 +35,8 @@ import {
   uploadCard,
 } from "./components/api";
 import { handleSubmit } from "./components/utils";
+
+let userId;
 
 function handleProfileFormSubmit(evt) {
   function makeRequest() {

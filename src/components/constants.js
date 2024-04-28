@@ -25,5 +25,3 @@ export const popupCardCaption = popupCard.querySelector(".popup__caption");
 
 export const editButton = document.querySelector(".profile__edit-button");
 export const addButton = document.querySelector(".profile__add-button");
-
-export let userId;
