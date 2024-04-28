@@ -29,6 +29,10 @@ function createCard(
   cardTitle.textContent = card.name;
   cardLikeElement.textContent = card.likes.length;
 
+  if (card.likes.some((like) => like._id == userId)) {
+    likeButton.classList.add("card__like-button_is-active");
+  }
+
   cardImage.addEventListener("click", () =>
     popupCallback(card.link, card.name)
   );
